@@ -1,42 +1,28 @@
-public class BankService {
-    static class BankAccount {
-        private double balance;
-
-        public BankAccount(double initialBalance) {
-            if (initialBalance < 0) {
-                throw new IllegalArgumentException("Initial balance cannot be negative");
-            }
-            this.balance = initialBalance;
-        }
-
-        public void deposit(double amount) {
-            if (amount <= 0) {
-                throw new IllegalArgumentException("Deposit must be positive");
-            }
-            balance += amount;
-        }
-
-        public void withdraw(double amount) {
-            if (amount <= 0 || amount > balance) {
-                throw new IllegalArgumentException("Invalid withdrawal");
-            }
-            balance -= amount;
-        }
-
-        public double getBalance() {
-            return balance;
-        }
-    }
+class BankService {
     public static void main(String[] args) {
-        BankAccount acc = new BankAccount(5000);
-        System.out.println("Initial Balance: " + acc.getBalance());
+        int[] arr = {10, 20, 30, 40, 50, 60, 70};
+        int key = 40;
 
-        acc.deposit(700);
-        System.out.println("Balance after deposit of 700: " + acc.getBalance());
+        int low = 0;
+        int high = arr.length - 1;
+        boolean found = false;
 
-        acc.withdraw(100);
-        System.out.println("Balance after withdrawal of 100: " + acc.getBalance());
+        while (low <= high) {
+            int mid = (low + high) / 2;
 
-        System.out.println("Final Balance: " + acc.getBalance());
+            if (arr[mid] == key) {
+                System.out.println("Element found at index: " + mid);
+                found = true;
+                break;
+            } else if (arr[mid] < key) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Element not found");
+        }
     }
 }
