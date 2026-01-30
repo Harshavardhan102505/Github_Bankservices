@@ -1,7 +1,7 @@
 class BankService {
     public static void main(String[] args) {
         int[] arr = {10, 20, 30, 40, 50, 60, 70};
-        int key = 40;
+        int key = 80;
 
         int low = 0;
         int high = arr.length - 1;
